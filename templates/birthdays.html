@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% set active_page = "projects" %}
+
+{% block title %}
+
+    Birthdays
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="main">
+        {% for row in people %}
+            <p><tr>
+                <td>{{ row[0] }} ({{ row[2] }}) -
+                {{ row[1] }}</td> days till birthday <br>
+            </p></tr>
+        {% endfor %}
+    </div>
+
+{% endblock %}

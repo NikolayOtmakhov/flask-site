@@ -1,0 +1,102 @@
+.Name {
+    font-family: 'Russo One', sans-serif;
+}
+
+
+html{
+    height:100%;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.bock_b {
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 40px;
+    /*max-width: 620px;*/
+}
+
+.project_links {
+    color: #000000;
+    font-weight: bold;
+    text-decoration:none;
+}
+
+.navbar {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+}
+
+#empty-space {
+    height: 0px;
+
+}
+
+
+.page-footer{
+    background: #000000;
+    color: #ffffff;
+    height: 111px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    width:100%;
+
+}
+
+
+.icon-row
+{
+    height: 100%;
+    max-height: 111px;
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*.icon-col*/
+/*{*/
+  /*float: left;*/
+/*  width:auto;*/
+/*  height:100%;*/
+/*  max-height: 50px;*/
+/*  max-width: 50px;*/
+/*}*/
+
+
+
+img.logo {
+    height: 87px;
+    max-height: 50px;
+    max-width: 128px;
+    display: block;
+    padding-left:40px;
+    padding-right:40px;
+    padding-top:12px;
+    padding-bottom:12px;
+   -webkit-filter: invert(1);
+   filter: invert(1);
+}
+

@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 from assets import sql_login
-import magic
+from logic import sql_functions
+
+Running_local = False
 
 app = Flask(__name__)
 
@@ -18,9 +20,7 @@ def contact():
 
 @app.route("/birthdays")
 def birthdays():
-
-    DATA = birthday_data(sql_login)
-
+    DATA = sql_functions.birthday_data(sql_login,Running_local)
     return render_template("birthdays.html",people=DATA)
 
 @app.route('/stocks', methods=['GET','POST'])
@@ -36,3 +36,6 @@ def stocksshow():
 def testsite():
     return render_template('testsite.html')
 
+if __name__ == '__main__':
+    Running_local = True
+    app.run(use_debugger=False, use_reloader=False, passthrough_errors=True)

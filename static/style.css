@@ -37,6 +37,8 @@ body {
     text-decoration:none;
 }
 
+
+
 .navbar {
     padding-left: 5%;
     padding-right: 5%;
@@ -98,5 +100,18 @@ img.logo {
     padding-bottom:12px;
    -webkit-filter: invert(1);
    filter: invert(1);
+}
+
+
+#contact-link {
+    font-weight: bold;
+    color: #0000ff;
+    border-bottom: 2px solid currentColor;
+}
+
+img.contact-logo {
+    height: 35px;
+
+
 }
 

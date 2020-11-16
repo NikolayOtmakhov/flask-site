@@ -1,9 +1,8 @@
-from flask import Flask, render_template
-import mysql.connector as mysql
+from flask import Flask, render_template, request
 from assets import sql_login
+import magic
 
 app = Flask(__name__)
-
 
 @app.route("/")
 def index():
@@ -19,31 +18,21 @@ def contact():
 
 @app.route("/birthdays")
 def birthdays():
-    db = mysql.connect(
-    host = sql_login.host,
-    user = sql_login.user,
-    passwd = sql_login.passwd,
-    database = sql_login.database)
 
-    cursor = db.cursor()
-
-    cursor.execute("SELECT \
-        name,  \
-        /*Days Till Bday*/ IF(DATEDIFF(DATE(CONCAT(YEAR(CURDATE()), RIGHT(birth, 6))), CURDATE())>0, \
-                            DATEDIFF(DATE(CONCAT(YEAR(CURDATE()), RIGHT(birth, 6))), CURDATE()), \
-                            DATEDIFF(DATE(CONCAT(YEAR(CURDATE())+1, RIGHT(birth, 6))), CURDATE())), \
-        /*Years Old*/ TIMESTAMPDIFF(YEAR, birth, CURDATE()) \
-        FROM friends \
-        ORDER BY \
-        /*Days Till Bday*/ IF(DATEDIFF(DATE(CONCAT(YEAR(CURDATE()), RIGHT(birth, 6))), CURDATE())>0, \
-                            DATEDIFF(DATE(CONCAT(YEAR(CURDATE()), RIGHT(birth, 6))), CURDATE()), \
-                            DATEDIFF(DATE(CONCAT(YEAR(CURDATE())+1, RIGHT(birth, 6))), CURDATE()))")
-
-    DATA = cursor.fetchall()
+    DATA = birthday_data(sql_login)
 
     return render_template("birthdays.html",people=DATA)
 
-@app.route('/testsite', methods=['GET'])
+@app.route('/stocks', methods=['GET','POST'])
+def stocks():
+    return render_template('stocks.html')
+
+@app.route('/stockshow', methods=['GET','POST'])
+def stocksshow():
+  return render_template('stockinfo.html', stock_ticker=request.args.get("stock_ticker", "world"))
+
+
+@app.route('/testsite' , methods=['GET','POST'])
 def testsite():
     return render_template('testsite.html')
 
